@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - "80:80"
+  backend:
+    build: ../backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database  # 表明backend服务依赖database服务，确保数据库先启动
+  database:
+    image: mysql:8.0  # 使用MySQL 8.0镜像
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # 设置root用户密码
+      MYSQL_DATABASE: notebook  # 设置数据库名称
+    volumes:
+      - mysql-data:/var/lib/mysql  # 数据持久化，将容器内数据目录挂载到宿主机指定卷
+    ports:
+      - "3306:3306"  # 端口映射，将容器3306端口映射到宿主机3306端口
+volumes:
+  mysql-data:  # 定义数据卷
