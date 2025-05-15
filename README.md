@@ -87,7 +87,7 @@ mvn clean install -U
    ○ 检查 MySQL 服务是否启动
    ○ 确认 application.yml 中的用户名和密码正确
 九、许可证
-   本项目采用 MIT License。
+    本项目采用 MIT License。
 
 
 
